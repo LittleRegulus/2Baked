@@ -17,6 +17,12 @@ void main() {
     await tester.pump();
 
     expect(find.text('2BAKED'), findsOneWidget);
+    expect(find.text('YOUR SESSION COPILOT IS WAKING UP'), findsOneWidget);
+    expect(find.text('START SESSION'), findsNothing);
+
+    await tester.pump(const Duration(milliseconds: 3500));
+    await tester.pumpAndSettle();
+
     expect(find.text('Dial in your dab.'), findsOneWidget);
     expect(find.text('START SESSION'), findsOneWidget);
     expect(find.text('Daily driver'), findsWidgets);
@@ -46,5 +52,13 @@ void main() {
 
   test('fact library contains fifty entries', () {
     expect(facts, hasLength(50));
+  });
+
+  test('hype voice pack includes the requested stoner energy', () {
+    expect(
+      hypeStartPrompts,
+      contains('Get ready to get high as fuck. 2Baked is on the clock!'),
+    );
+    expect(hypePrompts.any((phrase) => phrase.contains('Wazzup')), isTrue);
   });
 }

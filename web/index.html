@@ -17,7 +17,7 @@
 
   <link rel="icon" type="image/png" sizes="64x64" href="icons/2baked-64.png">
   <link rel="manifest" href="manifest.json">
-  <title>2Baked — Dab Timer</title>
+  <title>2Baked - Dab Timer</title>
 
   <style>
     html, body {
@@ -34,26 +34,41 @@
       place-items: center;
       background: radial-gradient(circle at 50% 35%, #172433 0, #080c12 58%);
     }
-    .loader-lockup { text-align: center; letter-spacing: .14em; font-weight: 900; }
-    .loader-ring {
-      width: 58px;
-      height: 58px;
-      margin: 0 auto 18px;
-      border-radius: 50%;
-      border: 5px solid #263342;
-      border-top-color: #ff5a4f;
-      border-right-color: #37c8ff;
-      animation: spin .8s linear infinite;
+    .loader-lockup {
+      text-align: center;
+      letter-spacing: .14em;
+      font-weight: 900;
     }
-    .loader-lockup span { color: #ff5a4f; }
-    @keyframes spin { to { transform: rotate(360deg); } }
+    .loader-mascot {
+      display: block;
+      width: 132px;
+      height: 132px;
+      margin: 0 auto 15px;
+      border-radius: 28px;
+      animation: float 1.7s ease-in-out infinite;
+      filter: drop-shadow(0 0 22px rgba(155, 234, 45, .22));
+    }
+    .loader-name { font-size: 25px; }
+    .loader-name .two { color: #ff4b55; }
+    .loader-name .baked { color: #9bea2d; }
+    .loader-note {
+      margin-top: 10px;
+      color: #9aa8b8;
+      font-size: 8px;
+      letter-spacing: .18em;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-7px) scale(1.025); }
+    }
   </style>
 </head>
 <body>
   <div id="loading" role="status" aria-label="Loading 2Baked">
     <div class="loader-lockup">
-      <div class="loader-ring"></div>
-      <span>2</span>BAKED
+      <img class="loader-mascot" src="icons/2baked-192.png" alt="">
+      <div class="loader-name"><span class="two">2</span><span class="baked">BAKED</span></div>
+      <div class="loader-note">YOUR SESSION COPILOT IS WAKING UP</div>
     </div>
   </div>
   <noscript>2Baked needs JavaScript enabled to run.</noscript>

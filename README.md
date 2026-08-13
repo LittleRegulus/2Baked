@@ -20,6 +20,8 @@
 - Responsive mobile navigation and desktop sidebar
 - Installable PWA metadata and original 2Baked icon set
 - Original red-eyed weed-leaf mascot used in the app header and full PWA icon set
+- 3.5-second animated branded launch splash
+- Optional hype-mode TTS with rowdy 2Baked start, cooldown, and ready callouts
 
 ## Run locally
 

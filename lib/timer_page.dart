@@ -720,33 +720,23 @@ class _ReadyDialog extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Container(
-                width: 76,
-                height: 76,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: AppColors.lime.withValues(alpha: 0.12),
-                  boxShadow: [
-                    BoxShadow(
-                      color: AppColors.lime.withValues(alpha: 0.22),
-                      blurRadius: 30,
+              const BrandMark(size: 104),
+              const SizedBox(height: 16),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  BrandWordmark(fontSize: 16),
+                  Text(
+                    ' SAYS...',
+                    style: TextStyle(
+                      color: AppColors.cream,
+                      fontSize: 13,
+                      fontWeight: FontWeight.w900,
+                      letterSpacing: 1.7,
                     ),
-                  ],
-                ),
-                child: const Icon(
-                  Icons.bolt_rounded,
-                  color: AppColors.lime,
-                  size: 40,
-                ),
-              ),
-              const SizedBox(height: 22),
-              Text(
-                'YOU’RE UP',
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: AppColors.lime,
-                  fontWeight: FontWeight.w900,
-                  letterSpacing: 2.4,
-                ),
+                  ),
+                ],
               ),
               const SizedBox(height: 10),
               Text(

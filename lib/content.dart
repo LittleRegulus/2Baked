@@ -53,14 +53,47 @@ const chillPrompts = <String>[
 ];
 
 const hypePrompts = <String>[
-  'Take yo dab — it is time to get 2Baked!',
-  'Banger ready. Lift off, legend!',
-  'Take that freakin’ dab — your moment is here!',
-  'We have ignition. Get comfy and send it!',
-  'Cooldown crushed. Time to get baked!',
-  'You are cleared for takeoff — easy does it!',
+  'Take yo dab! It is time to get 2Baked!',
+  'Banger ready. Lift off, you beautiful stoner!',
+  'Take that fucking dab. Your moment is here!',
+  'We have ignition. Get comfy and send that shit!',
+  'Cooldown crushed. Time to get high as fuck!',
+  'Wazzup! Wazzup! Your dab is ready!',
   'Hot lap complete. Take that dab and vibe out!',
-  'Ding ding! Your dab window just opened!',
+  'Ding ding, motherfucker! Your dab window just opened!',
+  '2Baked says go time. Blast off, legend!',
+  'Houston, we are baked. Take that dab!',
+];
+
+const chillStartPrompts = <String>[
+  'Settle in. Your 2Baked timer is rolling.',
+  'Nice and easy. Heating starts now.',
+  'Timer started. Take a breath and enjoy the ritual.',
+  'Your session is underway. Keep it smooth.',
+];
+
+const hypeStartPrompts = <String>[
+  'Get ready to get high as fuck. 2Baked is on the clock!',
+  'Wazzup! Wazzup! Heat it up, legend!',
+  'Let us get baked! Your heat timer starts right now!',
+  'Banger ready? Strap in, motherfucker. We have ignition!',
+  'Welcome aboard the 2Baked express. Next stop, outer space!',
+  'Wake and bake energy! Fire it up and let us ride!',
+];
+
+const chillCooldownPrompts = <String>[
+  'Heat is off. Let it cool.',
+  'Heating complete. Give it a calm cooldown.',
+  'Nice work. Now let the temperature settle.',
+  'Cool phase started. Your moment is almost here.',
+];
+
+const hypeCooldownPrompts = <String>[
+  'Flame down! Cool that bad boy. We are almost there!',
+  'Heat crushed. Now chill, homie. Dab incoming!',
+  'Wazzup! Cooldown started. Prepare for liftoff!',
+  'Torch off, party on. Let that shit cool!',
+  'Phase two, baby! Cool it down and get ready!',
 ];
 
 const facts = <DabFact>[

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'app_controller.dart';
@@ -29,7 +31,143 @@ class _TwoBakedAppState extends State<TwoBakedApp> {
       title: '2Baked — Dab Timer',
       debugShowCheckedModeBanner: false,
       theme: buildAppTheme(),
-      home: AppShell(controller: widget.controller),
+      home: BrandedLaunch(controller: widget.controller),
+    );
+  }
+}
+
+class BrandedLaunch extends StatefulWidget {
+  const BrandedLaunch({super.key, required this.controller});
+
+  final AppController controller;
+
+  @override
+  State<BrandedLaunch> createState() => _BrandedLaunchState();
+}
+
+class _BrandedLaunchState extends State<BrandedLaunch> {
+  Timer? _launchTimer;
+  bool _showApp = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _launchTimer = Timer(const Duration(milliseconds: 3500), () {
+      if (mounted) setState(() => _showApp = true);
+    });
+  }
+
+  @override
+  void dispose() {
+    _launchTimer?.cancel();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedSwitcher(
+      duration: const Duration(milliseconds: 500),
+      switchInCurve: Curves.easeOutCubic,
+      switchOutCurve: Curves.easeInCubic,
+      child: _showApp
+          ? AppShell(
+              key: const ValueKey('2baked-app'),
+              controller: widget.controller,
+            )
+          : const _LaunchSplash(key: ValueKey('2baked-splash')),
+    );
+  }
+}
+
+class _LaunchSplash extends StatelessWidget {
+  const _LaunchSplash({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        width: double.infinity,
+        decoration: const BoxDecoration(
+          gradient: RadialGradient(
+            center: Alignment(0, -0.28),
+            radius: 1.08,
+            colors: [
+              Color(0xFF1A2A16),
+              Color(0xFF0C1415),
+              AppColors.background,
+            ],
+            stops: [0, 0.48, 1],
+          ),
+        ),
+        child: SafeArea(
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 28),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TweenAnimationBuilder<double>(
+                    tween: Tween(begin: 0.55, end: 1),
+                    duration: const Duration(milliseconds: 1050),
+                    curve: Curves.elasticOut,
+                    builder: (context, value, child) => Transform.scale(
+                      scale: value,
+                      child: Opacity(
+                        opacity: value.clamp(0.0, 1.0),
+                        child: child,
+                      ),
+                    ),
+                    child: const BrandMark(size: 190),
+                  ),
+                  const SizedBox(height: 20),
+                  const BrandWordmark(fontSize: 43),
+                  const SizedBox(height: 12),
+                  Text(
+                    'HEAT  •  COOL  •  GET 2BAKED',
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      color: AppColors.cream,
+                      fontSize: 11,
+                      fontWeight: FontWeight.w900,
+                      letterSpacing: 2.2,
+                    ),
+                  ),
+                  const SizedBox(height: 38),
+                  ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 230),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: TweenAnimationBuilder<double>(
+                        tween: Tween(begin: 0, end: 1),
+                        duration: const Duration(milliseconds: 3200),
+                        curve: Curves.easeInOut,
+                        builder: (context, value, _) => LinearProgressIndicator(
+                          value: value,
+                          minHeight: 4,
+                          backgroundColor: AppColors.border,
+                          valueColor: const AlwaysStoppedAnimation(
+                            AppColors.logoLeaf,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 14),
+                  Text(
+                    'YOUR SESSION COPILOT IS WAKING UP',
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      fontSize: 9,
+                      fontWeight: FontWeight.w800,
+                      letterSpacing: 1.45,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

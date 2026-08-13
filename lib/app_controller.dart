@@ -279,7 +279,7 @@ class AppController extends ChangeNotifier {
         _advancePhase(now);
         return;
       }
-      if (voiceEnabled) unawaited(_speak('Heat is off. Let it cool.'));
+      if (voiceEnabled) unawaited(_speak(_pickCooldownMessage()));
       notifyListeners();
       unawaited(_syncWakeLock());
       return;
@@ -302,7 +302,7 @@ class AppController extends ChangeNotifier {
     await _stopSpeech();
     if (!voiceEnabled || session != _speechSession) return;
     await _speak(
-      'Dab timer started. Heating for ${activePreset.heatSeconds} seconds, then cooling for ${activePreset.coolSeconds}.',
+      '${_pickStartMessage()} Heating for ${activePreset.heatSeconds} seconds, then cooling for ${activePreset.coolSeconds}.',
     );
     await _narrateFacts(session);
   }
@@ -333,7 +333,7 @@ class AppController extends ChangeNotifier {
   Future<void> _announceReady(String message) async {
     await _stopSpeech();
     if (!voiceEnabled) return;
-    await _speak(message);
+    await _speak('2 Baked says. $message');
   }
 
   Future<void> _speak(String text) async {
@@ -363,6 +363,18 @@ class AppController extends ChangeNotifier {
 
   String _pickReadyMessage() {
     final prompts = promptVibe == 'Hype' ? hypePrompts : chillPrompts;
+    return prompts[_random.nextInt(prompts.length)];
+  }
+
+  String _pickStartMessage() {
+    final prompts = promptVibe == 'Hype' ? hypeStartPrompts : chillStartPrompts;
+    return prompts[_random.nextInt(prompts.length)];
+  }
+
+  String _pickCooldownMessage() {
+    final prompts = promptVibe == 'Hype'
+        ? hypeCooldownPrompts
+        : chillCooldownPrompts;
     return prompts[_random.nextInt(prompts.length)];
   }
 
