@@ -1,0 +1,40 @@
+{
+  "name": "2Baked — Dab Timer",
+  "short_name": "2Baked",
+  "description": "A laid-back dab timer, fact guide, and private session tracker.",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#080C12",
+  "theme_color": "#080C12",
+  "orientation": "any",
+  "prefer_related_applications": false,
+  "categories": ["lifestyle", "utilities"],
+  "icons": [
+    {
+      "src": "icons/2baked-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/2baked-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/2baked-maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icons/2baked-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

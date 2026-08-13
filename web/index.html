@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="$FLUTTER_BASE_HREF">
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="2Baked is a laid-back dab timer, fact guide, and private session tracker.">
+  <meta name="theme-color" content="#080C12">
+  <meta name="color-scheme" content="dark">
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="2Baked">
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/2baked-180.png">
+
+  <link rel="icon" type="image/png" sizes="64x64" href="icons/2baked-64.png">
+  <link rel="manifest" href="manifest.json">
+  <title>2Baked — Dab Timer</title>
+
+  <style>
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background: #080c12;
+      color: #f4f6f8;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    #loading {
+      position: fixed;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background: radial-gradient(circle at 50% 35%, #172433 0, #080c12 58%);
+    }
+    .loader-lockup { text-align: center; letter-spacing: .14em; font-weight: 900; }
+    .loader-ring {
+      width: 58px;
+      height: 58px;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      border: 5px solid #263342;
+      border-top-color: #ff5a4f;
+      border-right-color: #37c8ff;
+      animation: spin .8s linear infinite;
+    }
+    .loader-lockup span { color: #ff5a4f; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+  <div id="loading" role="status" aria-label="Loading 2Baked">
+    <div class="loader-lockup">
+      <div class="loader-ring"></div>
+      <span>2</span>BAKED
+    </div>
+  </div>
+  <noscript>2Baked needs JavaScript enabled to run.</noscript>
+  <script>
+    window.addEventListener('flutter-first-frame', function () {
+      document.getElementById('loading')?.remove();
+    });
+  </script>
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>
